@@ -12,12 +12,12 @@ def msg_sender():
     user_number = '+'
 
     msg = whatsapp_client.messages.create(
-        body=f'Olá, {key}. Funcionou esta porra!',
+        body=f'Olá, {user}. Mensagem enviada através do serviço AWS Lambda',
         from_=f'whatsapp:{number}',
-        to=f'whatsapp:{value}'
+        to=f'whatsapp:{user_number}'
         )
 
     print(msg.sid)
 
-
-msg_sender()
+def lambda_handler(event, context):
+    msg_sender()
